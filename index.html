@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>تسجيل الدخول</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>أدخل رمز الدخول</h2>
+    <input type="password" id="accessCode" placeholder="رمز الدخول" />
+    <button onclick="checkAccess()">دخول</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
