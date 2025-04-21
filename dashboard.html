@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <title>إدارة العمال</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>إدارة العمال</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="main">
-    <h2>قائمة العمال</h2>
-    <div>
-      <input type="text" id="search" placeholder="بحث..." onkeyup="searchWorkers()" />
-      <button onclick="showAddForm()">إضافة عامل جديد</button>
-    </div>
-    <table id="workersTable">
-      <thead>
-        <tr>
-          <th>الاسم</th>
-          <th>الكود البنكي</th>
-          <th>الرتبة</th>
-          <th>الكود الخاص</th>
-          <th>ملاحظات</th>
-          <th>إجراءات</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div id="workerForm" style="display:none;">
-      <h3 id="formTitle">إضافة عامل</h3>
-      <input type="text" id="name" placeholder="اسم الحساب" />
-      <input type="text" id="bankCode" placeholder="كود البطاقة البنكية" />
-      <input type="text" id="rank" placeholder="الرتبة" />
-      <textarea id="notes" placeholder="ملاحظات..."></textarea>
-      <button onclick="saveWorker()">حفظ</button>
-      <button onclick="hideForm()">إلغاء</button>
-    </div>
-  </div>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="script.js"></script>
+  <div id="main">
+    <h2>قائمة العمال</h2>
+    <div>
+      <input type="text" id="search" placeholder="بحث..." onkeyup="searchWorkers()" />
+      <button onclick="showAddForm()">إضافة عامل جديد</button>
+      <button onclick="window.location.href = 'trash.html'" style="background-color: #f44336; color: white;">عرض العمال المحذوفين</button>
+    </div>
+    <table id="workersTable">
+      <thead>
+        <tr>
+          <th>الاسم</th>
+          <th>الكود البنكي</th>
+          <th>الرتبة</th>
+          <th>الكود الخاص</th>
+          <th>ملاحظات</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="workerForm" style="display:none;">
+      <h3 id="formTitle">إضافة عامل</h3>
+      <input type="text" id="name" placeholder="اسم الحساب" />
+      <input type="text" id="bankCode" placeholder="كود البطاقة البنكية" />
+      <input type="text" id="rank" placeholder="الرتبة" />
+      <textarea id="notes" placeholder="ملاحظات..."></textarea>
+      <button onclick="saveWorker()">حفظ</button>
+      <button onclick="hideForm()">إلغاء</button>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
