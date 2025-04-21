@@ -4,24 +4,81 @@
   <meta charset="UTF-8">
   <title>سلة المحذوفات</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* صفحة سلة المحذوفات */
+.trash-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 140, 255, 0.2);
+}
+
+.trash-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00aaff;
+}
+
+.trash-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.trash-container thead {
+  background-color: #007acc;
+  color: white;
+}
+
+.trash-container th,
+.trash-container td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.trash-container tbody tr:hover {
+  background-color: #2a2a2a;
+}
+
+.trash-container button {
+  background-color: #007acc;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.trash-container button:hover {
+  background-color: #009dff;
+}
+
+  </style>
 </head>
 <body>
-  <button onclick="window.location.href = 'dashboard.html'" style="margin-bottom: 20px;">العودة إلى الصفحة الرئيسية</button>
-
-  <h1>العُمال المحذوفين</h1>
-  <table id="trashTable" border="1">
-    <thead>
-      <tr>
-        <th>الاسم</th>
-        <th>الكود البنكي</th>
-        <th>الرتبة</th>
-        <th>الكود</th>
-        <th>ملاحظات</th>
-        <th>إجراءات</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="trash-container">
+    <button onclick="window.location.href = 'dashboard.html'" style="margin-bottom: 20px;">العودة إلى الصفحة الرئيسية</button>
+    <h1>العُمال المحذوفين</h1>
+    <table id="trashTable">
+      <thead>
+        <tr>
+          <th>الاسم</th>
+          <th>الكود البنكي</th>
+          <th>الرتبة</th>
+          <th>الكود</th>
+          <th>ملاحظات</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
