@@ -82,8 +82,8 @@ async function fetchWorkers() {
       <td>${data.notes}</td>
       <td>
         <button onclick="editWorker('${doc.id}', '${data.name}', '${data.bankCode}', '${data.rank}', \`${data.notes}\`)">تعديل</button>
-        <button onclick="deleteWorker('${doc.id}')">حذف</button>
-      </td>
+        <button onclick="deleteWorker('${doc.id}', '${data.name}')">حذف</button>
+        </td>
     `;
     tableBody.appendChild(row);
   });
@@ -100,36 +100,32 @@ function editWorker(id, name, bankCode, rank, notes) {
   document.getElementById("notes").value = notes;
 }
 
-async function deleteWorker(id) {
-  try {
-    // جلب البيانات من "workers"
-    const doc = await db.collection("workers").doc(id).get();
-    
-    // التحقق إذا كان المستند موجودًا في Firestore
-    if (!doc.exists) {
-      console.error("العامل غير موجود في قاعدة البيانات.");
-      return; // إذا لم توجد البيانات، لا نقوم بأي شيء
-    }
+async function deleteWorker(id, name) {
+  const confirmed = confirm(`هل أنت متأكد أنك تريد حذف العامل "${name}"؟`);
+  if (!confirmed) return;
 
-    const data = doc.data();
-    
-    // التحقق إذا كانت البيانات موجودة
-    if (data) {
-      // نقل البيانات إلى جدول "trash"
-      await db.collection("trash").add(data);
-      
-      // حذف العامل من جدول "workers"
-      await db.collection("workers").doc(id).delete();
-      
-      // تحديث عرض العمال بعد الحذف
-      fetchWorkers();
-    } else {
-      console.error("لم يتم العثور على بيانات العامل.");
-    }
-  } catch (err) {
-    console.error("فشل حذف العامل:", err);
-  }
+  try {
+    const doc = await db.collection("workers").doc(id).get();
+
+    if (!doc.exists) {
+      console.error("العامل غير موجود في قاعدة البيانات.");
+      return;
+    }
+
+    const data = doc.data();
+
+    if (data) {
+      await db.collection("trash").add(data);
+      await db.collection("workers").doc(id).delete();
+      fetchWorkers();
+    } else {
+      console.error("لم يتم العثور على بيانات العامل.");
+    }
+  } catch (err) {
+    console.error("فشل حذف العامل:", err);
+  }
 }
+
 
 
 async function searchWorkers() {
